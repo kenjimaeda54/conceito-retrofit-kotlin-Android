@@ -9,18 +9,20 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val remote = RetrofitClient.serviceInstance(PostService::class.java)
-        val call: Call<List<PostModel>> = remote.list()
+        //cuidado ao tipar errado e comecar  gerar erro por tipagem. Por vias das duvids reteria tipagem
+        val remote = RetrofitClient.serviceClient(PostService::class.java)
+        val retrofit: Call<List<PostModel>> = remote.list()
         //enqueue e assincrono , existe outro metodo porem e sincrono
-        val reponse = call.enqueue(object : Callback<List<PostModel>> {
+        val response = retrofit.enqueue(object : Callback<List<PostModel>> {
             override fun onResponse(
                 call: Call<List<PostModel>>,
                 response: Response<List<PostModel>>
             ) {
-                val response = response.body()
+                val reponse = response.body()
             }
 
             //se aplicar um debug nas linha de reponse ira verificar a reponsta e um status 200
@@ -28,8 +30,8 @@ class MainActivity : AppCompatActivity() {
                 val error = t.message
             }
 
-
         })
+
 
     }
 }

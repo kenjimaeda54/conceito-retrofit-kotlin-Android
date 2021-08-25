@@ -3,8 +3,7 @@ package com.example.conceitos_retrofit
 import com.google.gson.annotations.SerializedName
 
 class PostModel {
-
-    // SerializedName e para garantir que a conversao do valor da api para o valor que estou determinando minha variavel
+    // SerializedName e para garantir que a conversao do valor da api,para o valor que estou determinando na minha variavel
     @SerializedName("id")
     var id: Int = 0
 
@@ -16,4 +15,5 @@ class PostModel {
 
     @SerializedName("body")
     var body: String = ""
+
 }

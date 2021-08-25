@@ -7,4 +7,5 @@ interface PostService {
     //recurso da url
     @GET("posts")
     fun list(): Call<List<PostModel>>
+
 }
